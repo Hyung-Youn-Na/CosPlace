@@ -10,7 +10,7 @@ import test
 import parser
 import commons
 from model import network
-from datasets.test_dataset import TestDataset
+from datasets.test_dataset import TestDataset, InferDataset
 
 args = parser.parse_arguments(is_training=False)
 start_time = datetime.now()
@@ -36,9 +36,14 @@ else:
 
 model = model.to(args.device)
 
-test_ds = TestDataset(args.test_set_folder, queries_folder="queries_v1",
-                      positive_dist_threshold=args.positive_dist_threshold)
+# test_ds = TestDataset(args.test_set_folder, queries_folder="queries_v1",
+#                       positive_dist_threshold=args.positive_dist_threshold)
 
-recalls, recalls_str = test.test(args, test_ds, model)
+db = '/nfs_shared/STR_Data/RoadView/muhan_roadview_transformed/1796/'
+query = '/nfs_shared/STR_Data/RoadView/muhan_roadview_transformed/2098/'
+
+test_ds = InferDataset(dataset_folder=db, queryset_folder=query)
+
+recalls, recalls_str = test.generate_matching_list(args, test_ds, model)
 logging.info(f"{test_ds}: {recalls_str}")
 

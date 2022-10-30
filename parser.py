@@ -77,9 +77,9 @@ def parse_arguments(is_training=True):
         if not os.path.exists(args.val_set_folder):
             raise FileNotFoundError(f"Folder {args.val_set_folder} does not exist")
     
-    args.test_set_folder = os.path.join(args.dataset_folder, "test")
-    if not os.path.exists(args.test_set_folder):
-        raise FileNotFoundError(f"Folder {args.test_set_folder} does not exist")
+    # args.test_set_folder = os.path.join(args.dataset_folder, "test")
+    # if not os.path.exists(args.test_set_folder):
+    #     raise FileNotFoundError(f"Folder {args.test_set_folder} does not exist")
     
     return args
 
