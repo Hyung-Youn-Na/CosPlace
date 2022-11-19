@@ -3,4 +3,4 @@ __pycache__
 logs
 cache
 .idea
-matching_list.txt
+matching_list*

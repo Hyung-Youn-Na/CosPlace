@@ -90,7 +90,7 @@ def generate_matching_list(args, eval_ds, model):
 
     queries_descriptors = all_descriptors[eval_ds.database_num:]
     database_descriptors = all_descriptors[:eval_ds.database_num]
-    # np.save('./database_2019.npy', database_descriptors)
+    np.save('./database_2019_panorama.npy', database_descriptors)
 
     # Use a kNN to find predictions
     faiss_index = faiss.IndexFlatL2(args.fc_output_dim)
@@ -100,7 +100,7 @@ def generate_matching_list(args, eval_ds, model):
     logging.debug("Calculating recalls")
     _, predictions = faiss_index.search(queries_descriptors, max(RECALL_VALUES))
 
-    matching_file = open('matching_list_2101.txt', 'a')
+    matching_file = open('matching_list_2098_panorama.txt', 'a')
     #### For each query, check if the predictions are correct
     data_paths = eval_ds.get_datapaths()
     recalls = np.zeros(len(RECALL_VALUES))

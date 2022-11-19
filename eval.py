@@ -39,8 +39,8 @@ model = model.to(args.device)
 # test_ds = TestDataset(args.test_set_folder, queries_folder="queries_v1",
 #                       positive_dist_threshold=args.positive_dist_threshold)
 
-db = '/nfs_shared/STR_Data/RoadView/muhan_roadview_transformed/1796/'
-query = '/nfs_shared/STR_Data/RoadView/muhan_roadview_transformed/2098/'
+db = '/nfs_shared/STR_Data/RoadView/muhan_roadview_resized/1796/'
+query = '/nfs_shared/STR_Data/RoadView/muhan_roadview_resized/2101/'
 
 test_ds = InferDataset(dataset_folder=db, queryset_folder=query)
 
